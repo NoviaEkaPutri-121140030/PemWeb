@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Blogs</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+</head>
+<body>
+    <header class="header-logo">
+        <img src="../assets/image/logo_musik.png" alt="Music" class="logo" />
+        <h1>Musical Harmony Blog</h1>
+    </header>
+
+    <main>
+        <div id="content">
+            <article id="about" class="card">
+                <h1>Voting Lagu favorit!!</h1>
+                <p>Masukkan lagu favoritmu kedalam list lagu hits</p>
+                <div class="form">
+                    <form id="musicForm">
+                        <label for="name">Nama Pengisi Form:</label>
+                        <input type="text" id="name" name="name" required><br>
+
+                        <label for="penyanyiFavorit">Nama Penyanyi Favorit:</label>
+                        <input type="text" id="penyanyiFavorit" name="penyanyiFavorit" required><br>
+
+                        <label for="judulLagu">Judul Lagu Favorit:</label>
+                        <input type="text" id="judulLagu" name="judulLagu" required><br>
+
+                        <label for="genreMusik">Genre Musik:</label>
+                        <input type="text" id="genreMusik" name="genreMusik" required><br>
+
+                        <label for="tahunRilis">Tahun Rilis Lagu:</label>
+                        <input type="text" id="tahunRilis" name="tahunRilis" required><br>
+
+                        <label for="lirikFavorit">Lirik Favorit:</label>
+                        <textarea id="lirikFavorit" name="lirikFavorit" required></textarea><br>
+
+                        <label for="alasanLaguFavorit">Alasan Lagu Ini Favorit:</label>
+                        <textarea id="alasanLaguFavorit" name="alasanLaguFavorit" required></textarea><br>
+
+                        <label for="linkLagu">Link ke Lagu (jika ada):</label>
+                        <input type="url" id="linkLagu" name="linkLagu"><br>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </article>
+        </div>
+
+        <aside>
+            <nav class="profile card">
+                <ul class="nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./form.html">Voting Lagu</a></li>
+                    <li><a href="./table.html">Daftar Lagu Hits</a></li>
+                    <li><a href="https://open.spotify.com/intl-id?">Spotify</a></li>
+                    <li><a href="https://music.youtube.com/">Youtube Music</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&#169, 2023, Novia Eka Putri</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const penyanyiFavorit = document.getElementById("penyanyiFavorit").value;
+            const judulLagu = document.getElementById("judulLagu").value;
+            const genreMusik = document.getElementById("genreMusik").value;
+            const tahunRilis = document.getElementById("tahunRilis").value;
+            const lirikFavorit = document.getElementById("lirikFavorit").value;
+            const alasanLaguFavorit = document.getElementById("alasanLaguFavorit").value;
+            const linkLagu = document.getElementById("linkLagu").value;
+
+            const dataMusik = {
+                name,
+                penyanyiFavorit,
+                judulLagu,
+                genreMusik,
+                tahunRilis,
+                lirikFavorit,
+                alasanLaguFavorit,
+                linkLagu,
+            };
+
+            if (localStorage) {
+                const data = localStorage.getItem("dataMusik");
+                let dataArray = [];
+                if (data) {
+                    dataArray = JSON.parse(data);
+                }
+                dataArray.push(dataMusik);
+                localStorage.setItem("dataMusik", JSON.stringify(dataArray));
+            }
+
+            alert("Data berhasil disimpan");
+
+            document.getElementById("musicForm").reset();
+        }
+
+        const form = document.getElementById("musicForm");
+        form.addEventListener("submit", handleSubmit);
+    </script>
+</body>
+</html>

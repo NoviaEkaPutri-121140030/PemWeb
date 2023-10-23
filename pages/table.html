@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Blogs</title>
+    <link rel="stylesheet" href="../assets/styles/style.css">
+</head>
+<body>
+    <header class="header-logo">
+        <img src="../assets/image/logo_musik.png" alt="Music" class="logo" />
+        <h1>Musical Harmony Blog</h1>
+    </header>
+
+    <main>
+        <div id="content">
+            <article id="about" class="card">
+                <h1>Daftar Lagu Favorit</h1>
+                <div class="daftar">
+                    <table border="1">
+                        <tr>
+                            <th>Nama Pengisi Form</th>
+                            <th>Nama Penyanyi Favorit</th>
+                            <th>Judul Lagu</th>
+                            <th>Genre Musik</th>
+                            <th>Tahun Rilis</th>
+                            <th>Lirik Favorit</th>
+                            <th>Alasan Lagu Ini Favorit</th>
+                            <th>Link ke Lagu (jika ada)</th>
+                        </tr>
+                        <tbody id="tableData"></tbody>
+                    </table>
+                </div>
+            </article>
+        </div>
+
+        <aside>
+            <nav class="profile card">
+                <ul class="nav-list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./form.html">Voting Lagu</a></li>
+                    <li><a href="./table.html">Daftar Lagu Hits</a></li>
+                    <li><a href="https://open.spotify.com/intl-id?">Spotify</a></li>
+                    <li><a href="https://music.youtube.com/">Youtube Music</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&#169, 2023, Novia Eka Putri</p>
+    </footer>
+
+    <script>
+        if (localStorage) {
+            const data = localStorage.getItem("dataMusik"); // Ubah "data" menjadi "dataMusik"
+            if (data) {
+                const dataArray = JSON.parse(data);
+                const tableData = document.getElementById("tableData");
+
+                dataArray.forEach(function (musik) {
+                    const row = tableData.insertRow(tableData.rows.length);
+                    row.insertCell(0).textContent = musik.name;
+                    row.insertCell(1).textContent = musik.penyanyiFavorit;
+                    row.insertCell(2).textContent = musik.judulLagu;
+                    row.insertCell(3).textContent = musik.genreMusik;
+                    row.insertCell(4).textContent = musik.tahunRilis;
+                    row.insertCell(5).textContent = musik.lirikFavorit;
+                    row.insertCell(6).textContent = musik.alasanLaguFavorit;
+                    row.insertCell(7).innerHTML = `<a href="${musik.linkLagu}" target="_blank">Dengarkan Lagu</a>`;
+                });
+            }
+        }
+    </script>
+
+<script>
+    const dataDummy = [
+        {
+            name: "John Doe",
+            penyanyiFavorit: "Taylor Swift",
+            judulLagu: "Love Story",
+            genreMusik: "Country Pop",
+            tahunRilis: "2008",
+            lirikFavorit: "It's a love story, baby just say yes...",
+            alasanLaguFavorit: "Liriknya romantis dan mudah diingat",
+            linkLagu: "https://www.youtube.com/watch?v=8xg3vE8Ie_E"
+        },
+        {
+            name: "Jane Smith",
+            penyanyiFavorit: "Ed Sheeran",
+            judulLagu: "Shape of You",
+            genreMusik: "Pop",
+            tahunRilis: "2017",
+            lirikFavorit: "The club isn't the best place to find a lover...",
+            alasanLaguFavorit: "Lagu yang enak untuk berdansa",
+            linkLagu: "https://www.youtube.com/watch?v=JGwWNGJdvx8"
+        },
+        {
+            name: "Bob Johnson",
+            penyanyiFavorit: "Adele",
+            judulLagu: "Someone Like You",
+            genreMusik: "Soul",
+            tahunRilis: "2011",
+            lirikFavorit: "Never mind, I'll find someone like you...",
+            alasanLaguFavorit: "Lagu yang menyentuh hati",
+            linkLagu: "https://www.youtube.com/watch?v=hLQl3WQQoQ0"
+        },
+        {
+            name: "Alice Davis",
+            penyanyiFavorit: "Coldplay",
+            judulLagu: "Fix You",
+            genreMusik: "Alternative Rock",
+            tahunRilis: "2005",
+            lirikFavorit: "When you try your best but you don't succeed...",
+            alasanLaguFavorit: "Lagu dengan makna mendalam",
+            linkLagu: "https://www.youtube.com/watch?v=k4V3Mo61fJM"
+        },
+        {
+            name: "Charlie Brown",
+            penyanyiFavorit: "Elton John",
+            judulLagu: "Rocket Man",
+            genreMusik: "Rock",
+            tahunRilis: "1972",
+            lirikFavorit: "And I think it's gonna be a long, long time...",
+            alasanLaguFavorit: "Klasik rock yang ikonik",
+            linkLagu: "https://www.youtube.com/watch?v=DtVBCG6ThDk"
+        },
+        {
+            name: "Eva Green",
+            penyanyiFavorit: "Beyoncé",
+            judulLagu: "Halo",
+            genreMusik: "R&B",
+            tahunRilis: "2009",
+            lirikFavorit: "Everywhere I'm looking now...",
+            alasanLaguFavorit: "Lagu ini memiliki vokal yang kuat",
+            linkLagu: "https://www.youtube.com/watch?v=bnVUHWCynig"
+        },
+        {
+            name: "Daniel Brown",
+            penyanyiFavorit: "The Beatles",
+            judulLagu: "Hey Jude",
+            genreMusik: "Rock",
+            tahunRilis: "1968",
+            lirikFavorit: "Hey, Jude, don't make it bad...",
+            alasanLaguFavorit: "Lagu klasik yang selalu membuat saya semangat",
+            linkLagu: "https://www.youtube.com/watch?v=A_MjCqQoLLA"
+        },
+        {
+            name: "Sophia Johnson",
+            penyanyiFavorit: "Ariana Grande",
+            judulLagu: "Thank U, Next",
+            genreMusik: "Pop",
+            tahunRilis: "2019",
+            lirikFavorit: "Thank you, next...",
+            alasanLaguFavorit: "Lagu ini membawa pesan kuat tentang kedewasaan",
+            linkLagu: "https://www.youtube.com/watch?v=gl1aHhXnN1k"
+        },
+        {
+            name: "David Lee",
+            penyanyiFavorit: "Queen",
+            judulLagu: "Bohemian Rhapsody",
+            genreMusik: "Rock",
+            tahunRilis: "1975",
+            lirikFavorit: "Is this the real life? Is this just fantasy?...",
+            alasanLaguFavorit: "Lagu epik dengan banyak variasi",
+            linkLagu: "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"
+        },
+        {
+            name: "Olivia Smith",
+            penyanyiFavorit: "Billie Eilish",
+            judulLagu: "Bad Guy",
+            genreMusik: "Pop",
+            tahunRilis: "2019",
+            lirikFavorit: "So you're a tough guy...",
+            alasanLaguFavorit: "Lagu yang keren dan edgy",
+            linkLagu: "https://www.youtube.com/watch?v=DyDfgMOUjCI"
+        }
+    ];
+
+    function populateTable() {
+        const tableData = document.getElementById("tableData");
+
+        dataDummy.forEach(function (musik) {
+            const row = tableData.insertRow(tableData.rows.length);
+            row.insertCell(0).textContent = musik.name;
+            row.insertCell(1).textContent = musik.penyanyiFavorit;
+            row.insertCell(2).textContent = musik.judulLagu;
+            row.insertCell(3).textContent = musik.genreMusik;
+            row.insertCell(4).textContent = musik.tahunRilis;
+            row.insertCell(5).textContent = musik.lirikFavorit;
+            row.insertCell(6).textContent = musik.alasanLaguFavorit;
+            row.insertCell(7).innerHTML = `<a href="${musik.linkLagu}" target="_blank">Dengarkan Lagu</a>`;
+        });
+    }
+
+    populateTable();
+</script>
+
+</body>
+</html>
